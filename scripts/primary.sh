@@ -147,7 +147,7 @@ mongo<<EOF
 use admin
 db.auth("$mongoAdminUser", "$mongoAdminPasswd")
 for (var i = 0; i <= $secondaryNodes-1; i++) { rs.add({ host: "${replSetName}secondary" + (i-1) +".${location}.${platformAddress}:27017", _id: i, votes: 1, priority: 1 }) }
-rs.addArb("${mongoAdminUser}secondary" + ($secondaryNodes-1) + ".${location}.${platformAddress}:27017")
+rs.addArb("${replSetName}secondary" + ($secondaryNodes-1) + ".${location}.${platformAddress}:27017")
 rs.status()
 exit
 EOF
