@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "linuxadmin"
+    },
+    "adminPassword": {
+      "value": "GENERATE"
+    },
+    "mongoAdminUsername": {
+      "value": "mongoadmin"
+    },
+    "mongoAdminPassword": {
+      "value": "GENERATE"
+    },
+    "secondaryNodeCount": {
+      "value": 2
+    },
+    "sizeOfDataDiskInGB": {
+      "value": 20
+    },
+    "dnsNamePrefix": {
+      "value": "igorsychmon3"
+    },
+    "ubuntuOsVersion": {
+        "value": "18.04-LTS"
+    },
+    "primaryNodeVmSize": {
+      "value": "Standard_D2s_v3"
+    },
+    "secondaryNodeVmSize": {
+      "value": "Standard_D2s_v3"
+    }
+  }
+}
