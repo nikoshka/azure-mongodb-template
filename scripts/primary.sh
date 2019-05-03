@@ -113,7 +113,7 @@ echo "start replica set initiation"
 mongo<<EOF
 use admin
 db.auth("$mongoAdminUser", "$mongoAdminPasswd")
-config ={_id:"$replSetName",members:[{_id:0,host:"${mongoAdminUser}.${location}.${platformAddress}:27017"}]}
+config ={_id:"$replSetName",members:[{_id:0,host:"${replSetName}.${location}.${platformAddress}:27017"}]}
 rs.initiate(config)
 rs.status()
 exit
@@ -146,7 +146,7 @@ echo "hostName is: $hostName"
 mongo<<EOF
 use admin
 db.auth("$mongoAdminUser", "$mongoAdminPasswd")
-for (var i = 0; i <= $secondaryNodes-1; i++) { rs.add({ host: "${mongoAdminUser}secondary" + (i-1) +".${location}.${platformAddress}:27017", _id: i, votes: 1, priority: 1 }) }
+for (var i = 0; i <= $secondaryNodes-1; i++) { rs.add({ host: "${replSetName}secondary" + (i-1) +".${location}.${platformAddress}:27017", _id: i, votes: 1, priority: 1 }) }
 rs.addArb("${mongoAdminUser}secondary" + ($secondaryNodes-1) + ".${location}.${platformAddress}:27017")
 rs.status()
 exit
